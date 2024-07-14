@@ -1,0 +1,16 @@
+def unboundedKnapsack(k, arr):
+    dp = [0] * (k + 1)
+
+    for num in arr:
+        for i in range(num, k + 1):
+            dp[i] = max(dp[i], dp[i - num] + num)
+    
+    return dp[k]
+
+t = int(input().strip())
+
+for _ in range(t):
+    n, k = map(int, input().strip().split())
+    arr = list(map(int, input().strip().split()))
+    result = unboundedKnapsack(k, arr)
+    print(result)
